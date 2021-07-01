@@ -32,9 +32,9 @@ def application_options(user_input):
     switcher = {
         1: calculate_bmi_using_american_standards,
         2: calculate_bmi_using_english_standards,
+        3: sys.exit
     }
-    return switcher.get(user_input, sys.exit)()
-
+    return switcher.get(user_input, "Invalid user input")()
 
 
 def main():
