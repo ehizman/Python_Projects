@@ -114,42 +114,45 @@ b.latitude, freedom
     count = 0
 
     for question in questions:
-        try:
-            answer = input(question).upper()
-            if not (answer == 'A' or answer == 'B'):
-                raise ValueError("Invalid exception")
-        except ValueError as error:
-            print(error)
-        else:
-            if answer == 'A':
-                count_of_a = count_of_a + 1
-            if answer == 'B':
-                count_of_b = count_of_b + 1
-            count = count + 1
-
-            if count == 5:
-                if count_of_a > count_of_b:
-                    personality_dichotomy = personality_dichotomy + 'E '
-                else:
-                    personality_dichotomy = personality_dichotomy + 'I '
+        answer = ''
+        while not (answer == 'A' or answer == 'B'):
+            try:
+                answer = input(question).upper()
+                if not (answer == 'A' or answer == 'B'):
+                    raise ValueError("Invalid input")
+            except ValueError as error:
+                print(error)
             else:
-                if count == 10:
-                    if count_of_a > count_of_b:
-                        personality_dichotomy = personality_dichotomy + 'S '
-                    else:
-                        personality_dichotomy = personality_dichotomy + 'N '
+                if answer == 'A':
+                    count_of_a = count_of_a + 1
+                if answer == 'B':
+                    count_of_b = count_of_b + 1
+                count = count + 1
+
+        if count == 5:
+            if count_of_a > count_of_b:
+                personality_dichotomy = personality_dichotomy + 'E '
+            else:
+                personality_dichotomy = personality_dichotomy + 'I '
+        else:
+            if count == 10:
+                if count_of_a > count_of_b:
+                    personality_dichotomy = personality_dichotomy + 'S '
                 else:
-                    if count == 15:
-                        if count_of_a > count_of_b:
-                            personality_dichotomy = personality_dichotomy + 'T '
-                        else:
-                            personality_dichotomy = personality_dichotomy + 'F '
+                    personality_dichotomy = personality_dichotomy + 'N '
+            else:
+                if count == 15:
+                    if count_of_a > count_of_b:
+                        personality_dichotomy = personality_dichotomy + 'T '
                     else:
-                        if count == 20:
-                            if count_of_a > count_of_b:
-                                personality_dichotomy = personality_dichotomy + 'J '
-                            else:
-                                personality_dichotomy = personality_dichotomy + 'P '
+                        personality_dichotomy = personality_dichotomy + 'F '
+                else:
+                    if count == 20:
+                        if count_of_a > count_of_b:
+                            personality_dichotomy = personality_dichotomy + 'J '
+                        else:
+                            personality_dichotomy = personality_dichotomy + 'P '
+
 
     display_personality_type(personality_dichotomy)
 
