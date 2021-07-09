@@ -108,6 +108,7 @@ a.control, govern or
 b.latitude, freedom
 """
     ]
+
     count_of_a: int = 0
     count_of_b: int = 0
     personality_dichotomy: str = ''
