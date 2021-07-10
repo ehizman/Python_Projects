@@ -31,6 +31,10 @@ class MyTestCase(unittest.TestCase):
         estimate: float = find_estimate_of_e_for_nth_term(6)
         self.assertEqual(round(1 + (1/1) + (1/2) + (1/6) + (1/24) + (1/120), 2), round(estimate, 2))
 
+    def test_raises_exception_when_a_negative_or_zero_value_is_passed_as_term(self):
+        with self.assertRaises(ValueError):
+            find_estimate_of_e_for_nth_term(-1)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,8 @@
 def find_estimate_of_e_for_nth_term(term):
+
+    if term < 1:
+        raise ValueError("Invalid parameter")
+
     if term == 1:
         return 1
     else:
