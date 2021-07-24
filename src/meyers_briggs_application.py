@@ -117,6 +117,8 @@ b.latitude, freedom
     for question in questions:
         answer = ''
         while not (answer == 'A' or answer == 'B'):
+            count_of_a = 0
+            count_of_b = 0
             try:
                 answer = input(question).upper()
                 if not (answer == 'A' or answer == 'B'):
@@ -153,7 +155,6 @@ b.latitude, freedom
                             personality_dichotomy = personality_dichotomy + 'J '
                         else:
                             personality_dichotomy = personality_dichotomy + 'P '
-
 
     display_personality_type(personality_dichotomy)
 
