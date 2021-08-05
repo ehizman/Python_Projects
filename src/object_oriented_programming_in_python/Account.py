@@ -2,7 +2,6 @@ from decimal import Decimal
 
 
 class Account:
-
     def __init__(self, name, initial_deposit):
         if initial_deposit < 0.0:
             raise ValueError("Invalid deposit amount")
