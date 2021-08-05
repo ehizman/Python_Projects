@@ -19,5 +19,6 @@ class MyTestCase(unittest.TestCase):
         returned_indices = return_indices_of_elements_that_sum_to_number_to_find(list_, number_to_find)
         self.assertListEqual([0, 2], returned_indices)
 
+
 if __name__ == '__main__':
     unittest.main()
