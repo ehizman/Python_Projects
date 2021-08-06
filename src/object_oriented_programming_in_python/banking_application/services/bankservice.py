@@ -3,6 +3,12 @@ from object_oriented_programming_in_python.banking_application.account import Ac
 from object_oriented_programming_in_python.banking_application.models.bank import Bank
 
 
+def _account_generator():
+    account_number = str(uuid.uuid4().int)[:11]
+    new_account = Account(account_number)
+    return new_account
+
+
 class BankService:
     def __init__(self):
         self.__bank = Bank()
@@ -16,13 +22,14 @@ class BankService:
                 return user
         return str()
 
-    def create_account_for_new_user(self) -> Account:
-        new_account = self.account_number_generator()
+    @staticmethod
+    def create_account_for_existing_user():
+        new_account = _account_generator()
         return new_account
 
-    def account_number_generator(self):
-        account_number = str(uuid.uuid4().int)[:11]
-        new_account = Account(account_number)
+    @staticmethod
+    def create_account_for_new_user() -> Account:
+        new_account = _account_generator()
         return new_account
 
     def add_new_user(self, user):
@@ -33,7 +40,3 @@ class BankService:
             if user.get_email == email:
                 return user
         return None
-
-    def create_account_for_existing_user(self):
-        new_account = self.account_number_generator()
-        return new_account

@@ -16,3 +16,7 @@ class Account:
     @property
     def get_account_pin(self):
         return self.__pin
+
+    def __str__(self):
+        return self.__account_number
+
