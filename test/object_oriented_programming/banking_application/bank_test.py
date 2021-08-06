@@ -1,30 +1,36 @@
 import unittest
-from object_oriented_programming_in_python.banking_application.person import Person
 from object_oriented_programming_in_python.banking_application.services.bankservice import BankService
+from object_oriented_programming_in_python.banking_application.services.userservice import UserService
+
+bank_service = BankService()
+user_service = UserService()
 
 
 class MyTestCase(unittest.TestCase):
+
+    def tearDown(self) -> None:
+        bank_service.view_all_accounts().clear()
 
     def test_something(self):
         self.assertEqual(True, True)  # add assertion here
 
     def test_bank_has_list_of_account(self):
-        ehis = Person("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
-        self.assertEqual(1, len(BankService.view_all_accounts()))
-
-    def test_that_two_customers_do_not_have_the_same_account(self):
-        ehis = Person("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
-        eseosa = Person("Eseosa", "Edemakhiota", "edemaeseosa@gmail.com")
-        self.assertNotEqual(ehis.get__accounts[0], eseosa.get__accounts[0])
+        user_service.register("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
+        print(bank_service.view_all_accounts())
+        self.assertEqual(1, len(bank_service.view_all_accounts()))
 
     def test_that_can_find_customer_by_account_number(self):
-        ehis = Person("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
+        ehis = user_service.register("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
+        eseosa = user_service.register("Eseosa", "Edemakhiota", "eseosaedemakhiota@gmail.com")
+        print(bank_service.view_all_accounts())
+        self.assertEqual(2, len(bank_service.view_all_accounts()))
+
         account_number = ehis.get__accounts[0]
-        BankService.find_user_by_account_number(account_number)
-        self.assertEquals(f"""First Name -> Ehis
-Last Name -> Edemakhiota
-Email -> edemaehiz@gmail.com
-Account Number -> {account_number}""", ehis.__str__())
+        user_to_find = bank_service.find_user_by_account_number(account_number)
+        self.assertTrue(id(ehis) == id(user_to_find))
+        account_number = eseosa.get__accounts[0]
+        user_to_find = bank_service.find_user_by_account_number(account_number)
+        self.assertTrue(id(eseosa) == id(user_to_find))
 
 
 if __name__ == '__main__':
