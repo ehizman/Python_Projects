@@ -1,5 +1,5 @@
 import uuid
-from object_oriented_programming_in_python.banking_application.account import Account
+from object_oriented_programming_in_python.banking_application.models.account import Account
 from object_oriented_programming_in_python.banking_application.models.bank import Bank
 
 
