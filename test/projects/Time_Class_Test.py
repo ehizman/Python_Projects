@@ -1,6 +1,6 @@
 import unittest
 
-from object_oriented_programming_in_python.Time_Class import Time_Class
+from projects.Time_Class import Time_Class
 
 
 class MyTestCase(unittest.TestCase):

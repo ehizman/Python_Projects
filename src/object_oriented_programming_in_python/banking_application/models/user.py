@@ -1,5 +1,7 @@
-class User:
+from object_oriented_programming_in_python.banking_application.models.account import Account
 
+
+class User:
     def __init__(self, first_name, last_name, email):
         self.__list_of_accounts = list()
         self.__first_name = first_name
@@ -22,13 +24,11 @@ class User:
     def get__accounts(self) -> list:
         return self.__list_of_accounts
 
-    def update_list_of_customer_accounts(self, account_number):
-        self.__list_of_accounts.append(account_number)
+    def update_user_accounts(self, account: Account):
+        self.__list_of_accounts.append(account)
 
     def __str__(self):
         return f"""First Name -> {self.__first_name}
 Last Name -> {self.__last_name}
 Email -> {self.__email}
 Accounts -> {self.__list_of_accounts}"""
-
-
