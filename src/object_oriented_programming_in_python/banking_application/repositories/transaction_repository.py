@@ -6,10 +6,16 @@ class TransactionRepository:
     def save_transaction(self, transaction):
         self.__list_of_transactions.append(transaction)
 
-    def find_account(self, account_id):
+    def find_transactions_on_this_(self, account_number: str) -> list:
+        list_of_transactions_on_account_number: list = list()
         for transaction in self.__list_of_transactions:
-            if transaction.get__transaction_id == account_id:
-                print(transaction.get__transaction_id)
+            if transaction.get_account_number_initiated_from == account_number:
+                print(type(transaction.get_account_number_initiated_from))
+                print(type(account_number))
+                list_of_transactions_on_account_number.append(transaction)
+        return list_of_transactions_on_account_number
+
+
 
 
 

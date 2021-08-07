@@ -1,16 +1,15 @@
 from unittest import TestCase
 
 from object_oriented_programming_in_python.banking_application.repositories.user_repository import UserRepository
-from object_oriented_programming_in_python.banking_application.services.userservice import UserService
+from object_oriented_programming_in_python.banking_application.services.user_service import UserService
 
 
 class TestUserRepository(TestCase):
-    def __init__(self):
-        super().__init__()
-        self.__userService = UserService()
-        self.__userRepository = UserRepository()
 
-
-    def test_user_repo(self):
-        self.__userService.register("Ehis", "Edemakhiota", "1234")
-
+    def test_can_add_new_user(self):
+        user_service = UserService()
+        user_repository = UserRepository()
+        user_service.register("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
+        user_service.register("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
+        user_service.register("Eseosa", "Edemakhiota", "edemaehis@gmail.com")
+        self.assertEqual(3, len(user_repository.get_set_of_users))

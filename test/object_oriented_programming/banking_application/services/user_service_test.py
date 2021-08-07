@@ -6,7 +6,7 @@ from object_oriented_programming_in_python.banking_application.exceptions.user_e
     InvalidLoginException
 from object_oriented_programming_in_python.banking_application.exceptions.user_exceptions.nonexistentuserexception import \
     NonExistentUserException
-from object_oriented_programming_in_python.banking_application.services.userservice import UserService
+from object_oriented_programming_in_python.banking_application.services.user_service import UserService
 
 
 class MyTestCase(unittest.TestCase):
@@ -61,7 +61,6 @@ class MyTestCase(unittest.TestCase):
             user_service.register("", "", "")
         with self.assertRaises(InvalidUserException):
             user_service.register("1234", "1234", "1234")
-
 
 
 if __name__ == '__main__':

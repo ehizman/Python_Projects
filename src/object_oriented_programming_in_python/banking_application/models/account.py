@@ -1,5 +1,4 @@
 
-
 def set_account_pin():
     # pin = input("Set Account Pin: ")
     pin = "1234"
@@ -13,14 +12,14 @@ class Account:
         self.__transactions: list = list()  # list of transaction ids
 
     @property
-    def get_account_number(self):
+    def get_account_number(self) -> str:
         return self.__account_number
 
     @property
     def get_account_pin(self):
         return self.__pin
 
-    def add_new_transaction(self, new_transaction):
+    def add_new_transaction_to_account(self, new_transaction):
         self.__transactions.append(new_transaction)
 
     def __str__(self):

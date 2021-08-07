@@ -1,6 +1,6 @@
 import unittest
 from object_oriented_programming_in_python.banking_application.services.bankservice import BankService
-from object_oriented_programming_in_python.banking_application.services.userservice import UserService
+from object_oriented_programming_in_python.banking_application.services.user_service import UserService
 
 bank_service = BankService()
 user_service = UserService()
