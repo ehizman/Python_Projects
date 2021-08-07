@@ -6,6 +6,8 @@ from object_oriented_programming_in_python.banking_application.exceptions.user_e
     InvalidLoginException
 from object_oriented_programming_in_python.banking_application.exceptions.user_exceptions.nonexistentuserexception import \
     NonExistentUserException
+from object_oriented_programming_in_python.banking_application.models.account import Account
+from object_oriented_programming_in_python.banking_application.repositories.account_repository import AccountRepository
 from object_oriented_programming_in_python.banking_application.services.user_service import UserService
 
 
@@ -39,7 +41,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_that_can_validate_user_login(self):
         user_service = UserService()
-        user_service.register("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
+        user = user_service.register("Ehis", "Edemakhiota", "edemaehiz@gmail.com")
         bool_ = user_service.validate_login("edemaehiz@gmail.com", "1234")
         self.assertTrue(bool_)
 

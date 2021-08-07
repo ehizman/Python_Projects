@@ -37,7 +37,7 @@ class AccountService:
 
     def create_account(self) -> Account:
         newly_generated_account_number: str = _account_generator()
-        new_account = Account(newly_generated_account_number)
+        new_account: Account = Account(newly_generated_account_number)
         self.__account_repository.save_account_to_repository(new_account)
         return new_account
 
@@ -45,31 +45,32 @@ class AccountService:
         if amount_to_deposit < 0.0:
             raise InvalidDepositAmountException("Invalid deposit amount")
         else:
-            transaction_id: str = self.__transaction_service.create_new_deposit_transaction(account_number,
-                                                                                            amount_to_deposit, message)
             account: Account = self.__account_repository.find_account_with_number(account_number)
             if account is not None:
+                transaction_id: str = self.__transaction_service.create_new_deposit_transaction(account_number,
+                                                                                                amount_to_deposit,
+                                                                                                message)
                 account.add_new_transaction_to_account(transaction_id)
             else:
                 raise InvalidAccountException("Account does not exist")
 
-    def view_all_accounts(self) -> set:
-        return self.__bank.get__set_of_user_accounts
-
-    def find_user_by_account_number(self, account_number) -> str:
-        for user in self.__bank.get__set_of_user_accounts:
-            if account_number in user.get__accounts:
-                return user
-        return str()
-
-    def add_new_user(self, user):
-        self.__bank.add_new_account(user)
-
-    def find_user_by_email(self, email):
-        for user in self.__bank.get__set_of_user_accounts:
-            if user.get_email == email:
-                return user
-        return None
+    # def view_all_accounts(self) -> set:
+    #     return self.__bank.get__set_of_user_accounts
+    #
+    # def find_user_by_account_number(self, account_number) -> str:
+    #     for user in self.__bank.get__set_of_user_accounts:
+    #         if account_number in user.get__accounts:
+    #             return user
+    #     return str()
+    #
+    # def add_new_user(self, user):
+    #     self.__bank.add_new_account(user)
+    #
+    # def find_user_by_email(self, email):
+    #     for user in self.__bank.get__set_of_user_accounts:
+    #         if user.get_email == email:
+    #             return user
+    #     return None
 
     def update_list_of_customer_accounts(self, account_number):
         self.__account_repository.get__list_of_accounts.append(account_number)
@@ -81,3 +82,6 @@ class AccountService:
         for transaction in list_of_transactions_on_account_number:
             balance = balance + transaction.get__transaction_amount
         return balance
+
+    def save_account(self, user_account: Account):
+        self.__account_repository.save_account_to_repository(user_account)

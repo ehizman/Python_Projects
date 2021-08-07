@@ -24,7 +24,7 @@ class UserService:
         self.__account_service = AccountService()
         self.__user_repository = UserRepository()
 
-    def register(self, first_name, last_name, email) -> User:
+    def register(self, first_name: str, last_name: str, email: str) -> User:
         validation(email, first_name, last_name)
         new_user: User = User(first_name, last_name, email)
         user_account: Account = self.__account_service.create_account()
@@ -32,13 +32,13 @@ class UserService:
         self.__user_repository.add_new_user(new_user)
         return new_user
 
-    def create_new_account_for_existing_user(self, email) -> None:
+    def create_new_account_for_existing_user(self, email: str) -> None:
         user = self.__user_repository.find_user_by_email(email)
         if user is not None:
             new_account = self.__account_service.create_account()
             user.update_user_accounts(new_account)
 
-    def validate_login(self, email, account_pin) -> bool:
+    def validate_login(self, email: str, account_pin: str) -> bool:
         user = self.__user_repository.find_user_by_email(email)
         if user is not None:
             for account in user.get__accounts:
