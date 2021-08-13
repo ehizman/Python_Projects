@@ -1,4 +1,3 @@
-
 def set_account_pin():
     # pin = input("Set Account Pin: ")
     pin = "1234"
@@ -24,3 +23,7 @@ class Account:
 
     def __str__(self):
         return self.__account_number
+
+    @property
+    def get__transactions(self):
+        return self.__transactions
