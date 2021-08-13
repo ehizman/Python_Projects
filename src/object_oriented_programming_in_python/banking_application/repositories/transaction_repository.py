@@ -4,11 +4,13 @@ from object_oriented_programming_in_python.banking_application.models.withdraw_t
 
 class TransactionRepository:
     __list_of_transactions = list()
+    __f = open("transaction.txt", mode='w+', encoding='utf-8')
 
     def __init__(self):
         pass
 
     def save_transaction(self, transaction):
+        self.__f.write(f'{transaction.__str__()}\n')
         self.__list_of_transactions.append(transaction)
 
     def find_transactions_on_this_(self, account_number: str) -> list:
