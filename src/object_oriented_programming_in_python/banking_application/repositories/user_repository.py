@@ -6,8 +6,10 @@ from object_oriented_programming_in_python.banking_application.models.user impor
 
 
 class UserRepository:
+    __set_of_users = set()
+
     def __init__(self):
-        self.__set_of_users = set()
+        pass
 
     def add_new_user(self, user: User) -> None:
         if user is not None:
