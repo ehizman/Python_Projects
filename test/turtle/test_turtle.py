@@ -110,6 +110,18 @@ class Test(TestCase):
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0]], sketch_pad.display_board)
 
+    def test_that_turtle_can_move_when_pen_is_up_in_south_direction(self):
+        turtle = Turtle()
+        sketch_pad = SketchPad(5)
+        number_of_steps = 5
+        turtle.move(sketch_pad, number_of_steps)
+        self.assertEqual((0, 4), turtle.get__current_position)
+        self.assertListEqual([[0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0],
+                              [0, 0, 0, 0, 0]], sketch_pad.display_board)
+
     def test_that_turtle_can_move_when_pen_is_down_in_south_direction(self):
         turtle = Turtle()
         turtle.penDown()
@@ -130,6 +142,19 @@ class Test(TestCase):
                               [0, 0, 0, 0, 1],
                               [0, 0, 0, 0, 1]], sketch_pad.display_board)
 
+    def test_that_turtle_can_move_when_pen_down_in_west_direction(self):
+        turtle = Turtle()
+        sketch_pad = SketchPad(5)
+        number_of_steps = 5
+        turtle.move(sketch_pad, number_of_steps)
+        turtle.turn_right()
+        number_of_steps = 2
+        turtle.move(sketch_pad, number_of_steps)
+        self.assertEqual((1, 4), turtle.get__current_position)
+        turtle.turn_right()
+        number_of_steps = 5
+        turtle.move(sketch_pad, number_of_steps)
+        self.assertEqual((1, 0), turtle.get__current_position)
 
     def test_that_turtle_can_move_when_pen_is_down_in_north_direction(self):
         turtle = Turtle()
@@ -138,6 +163,29 @@ class Test(TestCase):
         number_of_steps = 5
         turtle.move(sketch_pad, number_of_steps)
         turtle.turn_right()
+        number_of_steps = 5
+        turtle.move(sketch_pad, number_of_steps)
+
+        turtle.turn_right()
+        number_of_steps = 5
+        turtle.move(sketch_pad, number_of_steps)
+        turtle.turn_right()
+        number_of_steps = 5
+        turtle.move(sketch_pad, number_of_steps)
+        self.assertListEqual([[1, 1, 1, 1, 1],
+                              [1, 0, 0, 0, 1],
+                              [1, 0, 0, 0, 1],
+                              [1, 0, 0, 0, 1],
+                              [1, 1, 1, 1, 1]], sketch_pad.display_board)
+
+    def test_that_turtle_can_move_when_pen_is_up_in_north_direction(self):
+        turtle = Turtle()
+        turtle.penDown()
+        sketch_pad = SketchPad(5)
+        number_of_steps = 5
+        turtle.move(sketch_pad, number_of_steps)
+        turtle.turn_right()
+        turtle.penDown()
         number_of_steps = 5
         turtle.move(sketch_pad, number_of_steps)
 

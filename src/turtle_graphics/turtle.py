@@ -97,7 +97,7 @@ class Turtle:
                 if i != number_of_steps - 1:
                     self.__current_column_position -= 1
         else:
-            self.__current_column_position += number_of_steps - 1
+            self.__current_column_position -= number_of_steps - 1
 
     def move_north(self, sketch_pad, number_of_steps):
         if self.get__pen_position == PenPosition.DOWN:
