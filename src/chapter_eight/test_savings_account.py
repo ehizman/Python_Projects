@@ -25,5 +25,11 @@ class savings_account_test(TestCase):
         saver1.updateSavingsBalance(interest_for_current_month)
         self.assertEqual(8.368, saver1.calculateMonthlyInterest())
 
+    # def test_can_calculate_compound_interest(self):
+    #     saver1: SavingsAccount = SavingsAccount(2000.0)
+    #     SavingsAccount.modifyInterestRate(0.05)
+    #     self.assertEqual(8.368, saver1.calculate_compound_interest(1)
+
+
 
 

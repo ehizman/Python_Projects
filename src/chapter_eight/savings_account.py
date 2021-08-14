@@ -23,4 +23,7 @@ class SavingsAccount:
     def updateSavingsBalance(self, interest) -> None:
         self.__savingsBalance += interest
 
+    def calculate_compound_interest(self, period) -> float:
+        return round(self.__savingsBalance * (((1 + (self.__annualInterestRate / 12)) ** period) - 1), 3)
+
 
