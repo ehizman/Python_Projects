@@ -1,0 +1,3 @@
+
+class Pen:
+    pass
