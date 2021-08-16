@@ -95,7 +95,7 @@ class Test(TestCase):
         sketch_pad = SketchPad(20)
         number_of_steps = 5
         turtle.move(sketch_pad, number_of_steps)
-        self.assertEqual((0, 5), turtle.get__current_position)
+        self.assertEqual((0, 4), turtle.get__current_position)
 
     def test_that_turtle_can_move_when_pen_is_down_in_east_direction(self):
         turtle = Turtle()
@@ -103,7 +103,7 @@ class Test(TestCase):
         sketch_pad = SketchPad(5)
         number_of_steps = 5
         turtle.move(sketch_pad, number_of_steps)
-        self.assertEqual((0, 5), turtle.get__current_position)
+        self.assertEqual((0, 4), turtle.get__current_position)
         self.assertListEqual([[1, 1, 1, 1, 1],
                               [0, 0, 0, 0, 0],
                               [0, 0, 0, 0, 0],
